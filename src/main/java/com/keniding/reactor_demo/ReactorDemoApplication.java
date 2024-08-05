@@ -1,6 +1,7 @@
 package com.keniding.reactor_demo;
 
 import com.keniding.reactor_demo.operation.creation.Creation;
+import com.keniding.reactor_demo.operation.filter.Filter;
 import com.keniding.reactor_demo.operation.transformation.Transformation;
 import io.reactivex.Observable;
 import com.keniding.reactor_demo.model.Persona;
@@ -74,5 +75,13 @@ public class ReactorDemoApplication implements CommandLineRunner {
 		appT.mapInteger(3, 7, 10);
 		appT.flatMap(12);
 		appT.groupBy();
+
+		Filter appF = new Filter();
+		appF.filter(20);
+		appF.distinct();
+		appF.take(2);
+		appF.takeLast(3);
+		appF.skip(2);
+		appF.skipLast(2);
 	}
 }

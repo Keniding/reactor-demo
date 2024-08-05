@@ -21,6 +21,8 @@ public class Persona {
         personas.add(new Persona(1, "Henry", 20));
         personas.add(new Persona(2, "Keniding", 21));
         personas.add(new Persona(3, "Adams", 21));
+        personas.add(new Persona(4, "Reim", 25));
+        personas.add(new Persona(4, "Reim", 25));
 
         return Flux.fromIterable(personas);
     }

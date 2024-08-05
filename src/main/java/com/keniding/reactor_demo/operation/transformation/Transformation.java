@@ -10,7 +10,7 @@ public class Transformation {
 
     private static final Logger log = LoggerFactory.getLogger(Transformation.class);
 
-    Persona p = new Persona();
+    private final Persona p = new Persona();
 
     public void map(int edadMas) {
         p.personas()
