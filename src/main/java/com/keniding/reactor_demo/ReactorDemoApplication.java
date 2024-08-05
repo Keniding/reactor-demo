@@ -1,12 +1,12 @@
 package com.keniding.reactor_demo;
 
+import com.keniding.reactor_demo.operation.creation.Creation;
 import io.reactivex.Observable;
-import model.Persona;
+import com.keniding.reactor_demo.model.Persona;
 import org.slf4j.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import reactor.core.Disposable;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
@@ -69,5 +69,9 @@ public class ReactorDemoApplication implements CommandLineRunner {
 		mono();
 		flux();
 		fluxMono();
+
+		Creation app = new Creation();
+		app.range(0,5);
+		app.repeat(2);
 	}
 }

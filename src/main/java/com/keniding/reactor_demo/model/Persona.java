@@ -1,4 +1,4 @@
-package model;
+package com.keniding.reactor_demo.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
