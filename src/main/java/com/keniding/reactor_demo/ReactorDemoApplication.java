@@ -2,6 +2,7 @@ package com.keniding.reactor_demo;
 
 import com.keniding.reactor_demo.operation.combination.Combination;
 import com.keniding.reactor_demo.operation.creation.Creation;
+import com.keniding.reactor_demo.operation.error.Error;
 import com.keniding.reactor_demo.operation.filter.Filter;
 import com.keniding.reactor_demo.operation.transformation.Transformation;
 import io.reactivex.Observable;
@@ -89,5 +90,11 @@ public class ReactorDemoApplication implements CommandLineRunner {
 		appCom.merge();
 		appCom.zip();
 		appCom.zipWith();
+
+		Error appE = new Error();
+		//appE.retry(1); //error force
+		appE.errorReturn();
+		appE.errorResume();
+		//appE.errorMap(); //error force
 	}
 }
