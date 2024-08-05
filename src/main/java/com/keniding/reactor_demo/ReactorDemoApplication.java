@@ -1,6 +1,7 @@
 package com.keniding.reactor_demo;
 
 import com.keniding.reactor_demo.operation.creation.Creation;
+import com.keniding.reactor_demo.operation.transformation.Transformation;
 import io.reactivex.Observable;
 import com.keniding.reactor_demo.model.Persona;
 import org.slf4j.*;
@@ -17,6 +18,8 @@ import java.util.List;
 public class ReactorDemoApplication implements CommandLineRunner {
 
 	private static final Logger log = LoggerFactory.getLogger(ReactorDemoApplication.class);
+
+	Persona p = new Persona();
 
 	public void reactor() {
 		Mono.just(new Persona(1, "Keniding", 21))
@@ -41,22 +44,14 @@ public class ReactorDemoApplication implements CommandLineRunner {
 	}
 
 	public void flux() {
-		personas().subscribe(p -> log.info("[Flux] Personas, persona: {}", p));
+		p.personas().subscribe(p -> log.info("[Flux] Personas, persona: {}", p));
 	}
 
 	public void fluxMono() {
-		Flux<Persona> fx = personas();
+		Flux<Persona> fx = p.personas();
 		fx.collectList().subscribe(lista -> log.info("[Flux a Mono] Lista: {}", lista.toString()));
 	}
 
-	private Flux<Persona> personas() {
-		List<Persona> personas = new ArrayList<>();
-		personas.add(new Persona(1, "Henry", 20));
-		personas.add(new Persona(2, "Keniding", 21));
-		personas.add(new Persona(3, "Adams", 23));
-
-		return Flux.fromIterable(personas);
-	}
 
 	public static void main(String[] args) {
 		SpringApplication.run(ReactorDemoApplication.class, args);
@@ -70,8 +65,14 @@ public class ReactorDemoApplication implements CommandLineRunner {
 		flux();
 		fluxMono();
 
-		Creation app = new Creation();
-		app.range(0,5);
-		app.repeat(2);
+		Creation appC = new Creation();
+		appC.range(0,5);
+		appC.repeat(2);
+
+		Transformation appT = new Transformation();
+		appT.map(10);
+		appT.mapInteger(3, 7, 10);
+		appT.flatMap(12);
+		appT.groupBy();
 	}
 }
