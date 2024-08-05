@@ -1,5 +1,6 @@
 package com.keniding.reactor_demo;
 
+import com.keniding.reactor_demo.operation.combination.Combination;
 import com.keniding.reactor_demo.operation.creation.Creation;
 import com.keniding.reactor_demo.operation.filter.Filter;
 import com.keniding.reactor_demo.operation.transformation.Transformation;
@@ -83,5 +84,10 @@ public class ReactorDemoApplication implements CommandLineRunner {
 		appF.takeLast(3);
 		appF.skip(2);
 		appF.skipLast(2);
+
+		Combination appCom = new Combination();
+		appCom.merge();
+		appCom.zip();
+		appCom.zipWith();
 	}
 }

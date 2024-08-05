@@ -26,4 +26,15 @@ public class Persona {
 
         return Flux.fromIterable(personas);
     }
+
+    public Flux<Persona> kids() {
+        List<Persona> kits = new ArrayList<>();
+        kits.add(new Persona(10, "John", 5));
+        kits.add(new Persona(20, "Angel", 6));
+        kits.add(new Persona(30, "Gia", 7));
+        kits.add(new Persona(40, "Gael", 5));
+        kits.add(new Persona(50, "Mary", 5));
+
+        return Flux.fromIterable(kits);
+    }
 }
